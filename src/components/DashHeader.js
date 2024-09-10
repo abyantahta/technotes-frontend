@@ -11,6 +11,8 @@ import {
 import { useNavigate, Link, useLocation } from 'react-router-dom'
 import { useSendLogoutMutation } from '../features/auth/authApiSlice'
 import useAuth from '../hooks/useAuth'
+import { PulseLoader } from 'react-spinners'
+// PulseLoader
 
 
 const DASH_REGEX = /^\/dash(\/)?$/
@@ -42,7 +44,7 @@ const DashHeader = () => {
     const onNewUserClicked = ()=> navigate('/dash/users/new')
     const onUsersClicked = ()=> navigate('/dash/users')
 
-    if (isLoading) return <p>Logging Out...</p>
+    if (isLoading) return <PulseLoader color={'#FFF'} />
 
     if (isError) return <p>Error: {error.data?.message}</p>
 

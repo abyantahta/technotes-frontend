@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth"
 
 const EditNoteForm = ({ note, users }) => {
     const {isAdmin,isManager} = useAuth()
-
+    console.log('users',users)
     const [updateNote, {
         isLoading,
         isSuccess,

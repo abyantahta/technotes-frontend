@@ -10,7 +10,7 @@ export const store = configureStore({
     },
     middleware: getDefaultMiddleware => 
         getDefaultMiddleware().concat(apiSlice.middleware), 
-    devtools: true
+    devtools: false //kalo mau dipublish di false in dulu, kalo mode dev boleh di true
 })
 
 setupListeners(store.dispatch)
