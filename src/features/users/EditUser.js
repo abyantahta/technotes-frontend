@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { selectUserById, useGetUsersQuery } from './usersApiSlice'
+import { useGetUsersQuery } from './usersApiSlice'
 import EditUserForm from './EditUserForm'
 import { PulseLoader } from 'react-spinners'
 import useTitle from '../../hooks/useTitle'
