@@ -9,7 +9,7 @@ const EditUser = () => {
     const { id } = useParams()
 
     // const user = useSelector(state => selectUserById(state, id))
-    const user = useGetUsersQuery("usersList", {
+    const {user} = useGetUsersQuery("usersList", {
         selectFromResult : ({data}) =>({
             user : data?.entities[id]
         })

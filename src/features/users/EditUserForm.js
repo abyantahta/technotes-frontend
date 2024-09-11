@@ -9,6 +9,7 @@ const USER_REGEX = /^[A-z]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
 
 const EditUserForm = ({ user }) => {
+    console.log(user,'hausihduoashduashdouashoudhasuodhasoudhasou')
 
     const [updateUser, {
         isLoading,
@@ -66,6 +67,7 @@ const EditUserForm = ({ user }) => {
 
     const onSaveUserClicked = async (e) => {
         if (password) {
+            console.log(user, 'ini user id nya')
             await updateUser({ id: user.id, username, password, roles, active })
         } else {
             await updateUser({ id: user.id, username, roles, active })
@@ -88,15 +90,17 @@ const EditUserForm = ({ user }) => {
 
     let canSave
     if (password) {
-        canSave = [roles.length, validUsername, validPassword].every(Boolean) && !isLoading
+        console.log('roles',roles)
+        console.log('rolesLength',roles?.length)
+        canSave = [roles?.length, validUsername, validPassword].every(Boolean) && !isLoading
     } else {
-        canSave = [roles.length, validUsername].every(Boolean) && !isLoading
+        canSave = [roles?.length, validUsername].every(Boolean) && !isLoading
     }
 
     const errClass = (isError || isDelError) ? "errmsg" : "offscreen"
     const validUserClass = !validUsername ? 'form__input--incomplete' : ''
     const validPwdClass = password && !validPassword ? 'form__input--incomplete' : ''
-    const validRolesClass = !Boolean(roles.length) ? 'form__input--incomplete' : ''
+    const validRolesClass = !Boolean(roles?.length) ? 'form__input--incomplete' : ''
 
     const errContent = (error?.data?.message || delerror?.data?.message) ?? ''
 
