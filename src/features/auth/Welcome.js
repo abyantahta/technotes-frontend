@@ -17,10 +17,10 @@ const Welcome = () => {
     const content = (
         <section className="welcome flex flex-col justify-center items-center pt-24">
 
-            <p>{today}</p>
+            {/* <p>{today}</p> */}
 
             {/* <h1>Welcome {username}!</h1> */}
-            <p className='bg-primaryDarker px-6 text-primaryBlue font-bold text-2xl '>Hello !</p>
+            <p className='bg-primaryDarker px-6 text-primaryBlue font-bold text-2xl -mb-2'>Hello !</p>
             <h1 className='text-primaryBlue text-8xl font-bold [text-shadow:_0_4px_7px_rgb(0_0_0_/_40%)]'>{username}</h1>
 
             <div className="flex gap-10 mt-10">
