@@ -4,6 +4,7 @@ const Public = () => {
     const content = (
         <section className="public">
             <header>
+                <h1 className='text-red-500'>Hai teman teman</h1>
                 <h1>Welcome to <span className="nowrap">Dan D. Repairs!</span></h1>
             </header>
             <main className="public__main">
