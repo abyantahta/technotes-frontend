@@ -4,7 +4,7 @@ import React from 'react'
 
 const Layout = () => {
   return (
-  <div className="bg-primaryLight w-full h-lvh px-64 py-24">
+  <div className="bg-primaryLight w-full h-lvh px-48 py-24">
       <Outlet/>
   </div>
 )

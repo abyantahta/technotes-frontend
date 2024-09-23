@@ -61,7 +61,7 @@ const DashHeader = () => {
                 title='New Note'
                 onClick={onNewNoteClicked}
             >
-                <FontAwesomeIcon icon={faFileCirclePlus}/>
+                <FontAwesomeIcon size='2x' color='#295F98' icon={faFileCirclePlus}/>
             </button>
         )
     }
@@ -73,7 +73,7 @@ const DashHeader = () => {
                 title='New User'
                 onClick={onNewUserClicked}
             >
-                <FontAwesomeIcon icon={faUserPlus}/>
+                <FontAwesomeIcon size='2x' color='#295F98' icon={faUserPlus}/>
             </button>
         )
     }
@@ -87,7 +87,7 @@ const DashHeader = () => {
                     title='Users'
                     onClick={onUsersClicked}
                 >
-                    <FontAwesomeIcon icon={faUserGear}/>
+                    <FontAwesomeIcon size='2x' color='#295F98' icon={faUserGear}/>
                 </button>
             )
         }
@@ -101,7 +101,7 @@ const DashHeader = () => {
                 title='Notes'
                 onClick={onNotesClicked}
             >
-                <FontAwesomeIcon icon={faFilePen}/>
+                <FontAwesomeIcon size='2x' color='#295F98' icon={faFilePen}/>
             </button>
         )
     }
@@ -112,7 +112,7 @@ const DashHeader = () => {
             title="Logout"
             onClick={sendLogout}
         >
-            <FontAwesomeIcon icon={faRightFromBracket} />
+            <FontAwesomeIcon size='2x' color='#295F98' icon={faRightFromBracket} />
         </button>
     )
 
@@ -123,23 +123,23 @@ const DashHeader = () => {
         buttonContent = <p>Logging Out...</p>
     }else {
         buttonContent = (
-            <>
+            <div className='flex gap-4'>
                 {newNoteButton}
                 {newUserButton}
                 {noteButton}
                 {userButton}
                 {logoutButton}
-            </>
+            </div>
         )
     }
 
     const content = (
         <>
             <p className={errClass}>{error?.data?.message}</p>
-            <header className="dash-header">
-                <div className={`dash-header__container ${dashClass}`}>
+            <header className="dash-header bg-primaryDarker absolute top-0 left-0 w-full h-16">
+                <div className={` px-28 flex items-center justify-between h-full ${dashClass}`}>
                     <Link to="/dash">
-                        <h1 className="dash-header__title">techNotes</h1>
+                        <h1 className="dash-header__title font-bold text-3xl text-primaryBlue">Bengkel Laptop</h1>
                     </Link>
                     <nav className="dash-header__nav">
                         {/* add more buttons later */}
