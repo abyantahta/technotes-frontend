@@ -58,52 +58,55 @@ const NewNoteForm = ({ users }) => {
         <>
             <p className={errClass}>{error?.data?.message}</p>
 
-            <form className="form" onSubmit={onSaveNoteClicked}>
-                <div className="form__title-row">
-                    <h2>New Note</h2>
-                    <div className="form__action-buttons">
-                        <button
-                            className="icon-button"
-                            title="Save"
-                            disabled={!canSave}
-                        >
-                            <FontAwesomeIcon icon={faSave} />
-                        </button>
-                    </div>
-                </div>
-                <label className="form__label" htmlFor="title">
-                    Title:</label>
+            <form className="form flex flex-col w-1/2 mx-auto" onSubmit={onSaveNoteClicked}>
+                {/* <div className="form__title-row"> */}
+                <p className='bg-primaryDarker px-6 text-primaryBlue font-bold text-4xl text-center w-64 py-1 mx-auto mb-10 mt-8 [text-shadow:_0_2px_5px_rgb(0_0_0_/_40%)] '>Create Note</p>
+                {/* </div> */}
+                {/* <label className="form__label" htmlFor="title">
+                    Title:</label> */}
                 <input
-                    className={`form__input ${validTitleClass}`}
-                    id="title"
+                    className="py-3 pl-4 outline-none rounded-md border-primaryBrown border-solid border-2 font-semibold text-primaryBlue"
                     name="title"
                     type="text"
                     autoComplete="off"
                     value={title}
                     onChange={onTitleChanged}
+                    placeholder="Input Title Here..."
                 />
 
-                <label className="form__label" htmlFor="text">
-                    Text:</label>
+                {/* <label className="form__label" htmlFor="text">
+                    Text:</label> */}
                 <textarea
-                    className={`form__input form__input--text ${validTextClass}`}
+                    className="mt-4 py-3 pl-4 outline-none rounded-md border-primaryBrown border-solid border-2 font-semibold text-primaryBlue max-h-64 h-48"
                     id="text"
                     name="text"
                     value={text}
                     onChange={onTextChanged}
+                    placeholder="Input Text Here..."
+                    
                 />
 
-                <label className="form__label form__checkbox-container" htmlFor="username">
+                <label className="text-center my-2 font-bold text-primaryBlue" htmlFor="username">
                     ASSIGNED TO:</label>
                 <select
                     id="username"
                     name="username"
-                    className="form__select"
+                    className=" h-8 text-center font-semibold border-primaryBrown border-solid border-2 rounded-md"
                     value={userId}
                     onChange={onUserIdChanged}
                 >
                     {options}
                 </select>
+                <div className="form__action-buttons">
+                    <button
+                        className={` w-full mt-4 py-1 font-bold text-xl rounded-md  ${canSave?'bg-primaryBrown text-white':'bg-gray-300 text-gray-100'}`}
+                        title="Save"
+                        disabled={!canSave}
+                    >
+                        Create
+                        {/* <FontAwesomeIcon icon={faSave} /> */}
+                    </button>
+                </div>
 
             </form>
         </>

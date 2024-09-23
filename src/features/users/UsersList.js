@@ -34,18 +34,21 @@ const UsersList = () => {
             : null
 
         content = (
-            <table className="table table--users">
-                <thead className="table__thead">
-                    <tr>
-                        <th scope="col" className="table__th user__username">Username</th>
-                        <th scope="col" className="table__th user__roles">Roles</th>
-                        <th scope="col" className="table__th user__edit">Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {tableContent}
-                </tbody>
-            </table>
+            <>
+                <p className='bg-primaryDarker px-6 text-primaryBlue font-bold text-4xl text-center w-52 py-1 mx-auto mb-10 mt-8 [text-shadow:_0_2px_5px_rgb(0_0_0_/_40%)] '>User List</p>
+                <table className="table table--users">
+                    <thead className="table__thead">
+                        <tr>
+                            <th scope="col" className="table__th user__username">Username</th>
+                            <th scope="col" className="table__th user__roles">Roles</th>
+                            <th scope="col" className="table__th user__edit">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tableContent}
+                    </tbody>
+                </table>
+            </>
         )
     }
 

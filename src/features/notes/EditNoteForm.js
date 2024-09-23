@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth"
 
 const EditNoteForm = ({ note, users }) => {
     const {isAdmin,isManager} = useAuth()
-    console.log('users',users)
+    // console.log('users',users)
     const [updateNote, {
         isLoading,
         isSuccess,
@@ -79,11 +79,12 @@ const EditNoteForm = ({ note, users }) => {
     if(isManager || isAdmin){
         deleteButton = (
             <button
-                className="icon-button"
+                className={` w-full mt-4 py-1 font-bold text-xl rounded-md bg-red-400 text-white`}
                 title="Delete"
                 onClick={onDeleteNoteClicked}
             >
-                <FontAwesomeIcon icon={faTrashCan}/>
+                {/* <FontAwesomeIcon icon={faTrashCan}/> */}
+                Delete
             </button>
         )
     }
@@ -92,10 +93,10 @@ const EditNoteForm = ({ note, users }) => {
         <>
             <p className={errClass}>{errContent}</p>
 
-            <form className="form" onSubmit={e => e.preventDefault()}>
+            <form className="form flex flex-col w-1/2 mx-auto" onSubmit={e => e.preventDefault()}>
                 <div className="form__title-row">
-                    <h2>Edit Note #{note.ticket}</h2>
-                    <div className="form__action-buttons">
+                <p className='bg-primaryDarker px-6 text-primaryBlue font-bold text-4xl text-center w-64 py-1 mx-auto mb-10 mt-8 [text-shadow:_0_2px_5px_rgb(0_0_0_/_40%)] '>Edit Note</p>
+                    {/* <div className="form__action-buttons">
                         <button
                             className="icon-button"
                             title="Save"
@@ -105,35 +106,36 @@ const EditNoteForm = ({ note, users }) => {
                             <FontAwesomeIcon icon={faSave} />
                         </button>
                         {deleteButton}
-                    </div>
+                    </div> */}
                 </div>
-                <label className="form__label" htmlFor="note-title">
-                    Title:</label>
+                {/* <label className="form__label" htmlFor="note-title">
+                    Title:</label> */}
                 <input
-                    className={`form__input ${validTitleClass}`}
+                    className="py-3 pl-4 outline-none rounded-md border-primaryBrown border-solid border-2 font-semibold text-primaryBlue"
                     id="note-title"
                     name="title"
                     type="text"
                     autoComplete="off"
                     value={title}
                     onChange={onTitleChanged}
+                    placeholder="Input Title Here..."
                 />
 
-                <label className="form__label" htmlFor="note-text">
-                    Text:</label>
+                {/* <label className="form__label" htmlFor="note-text">
+                    Text:</label> */}
                 <textarea
-                    className={`form__input form__input--text ${validTextClass}`}
+                    className="mt-4 py-3 pl-4 outline-none rounded-md border-primaryBrown border-solid border-2 font-semibold text-primaryBlue max-h-48"
                     id="note-text"
                     name="text"
                     value={text}
                     onChange={onTextChanged}
                 />
-                <div className="form__row">
+                <div className="flex justify-between mt-4">
                     <div className="form__divider">
-                        <label className="form__label form__checkbox-container" htmlFor="note-completed">
+                        <label className="form__label form__checkbox-container flex items-center font-semibold" htmlFor="note-completed">
                             WORK COMPLETE:
                             <input
-                                className="form__checkbox"
+                                className="form__checkbox ml-2 w-4 h-4"
                                 id="note-completed"
                                 name="completed"
                                 type="checkbox"
@@ -142,12 +144,12 @@ const EditNoteForm = ({ note, users }) => {
                             />
                         </label>
 
-                        <label className="form__label form__checkbox-container" htmlFor="note-username">
+                        <label className="text-center my-2 font-bold text-primaryBlue" htmlFor="note-username">
                             ASSIGNED TO:</label>
                         <select
                             id="note-username"
                             name="username"
-                            className="form__select"
+                            className="form__select ml-2 mt-2 w-32 text-center font-semibold"
                             value={userId}
                             onChange={onUserIdChanged}
                         >
@@ -159,6 +161,18 @@ const EditNoteForm = ({ note, users }) => {
                         <p className="form__updated">Updated:<br />{updated}</p>
                     </div>
                 </div>
+                <div className="form__action-buttons">
+                        <button
+                        className={` w-full mt-4 py-1 font-bold text-xl rounded-md  ${canSave?'bg-primaryBrown text-white':'bg-gray-300 text-gray-100'}`}
+                            title="Save"
+                            onClick={onSaveNoteClicked}
+                            disabled={!canSave}
+                        >
+                            Update
+                            {/* <FontAwesomeIcon icon={faSave} /> */}
+                        </button>
+                        {deleteButton}
+                    </div>
             </form>
         </>
     )

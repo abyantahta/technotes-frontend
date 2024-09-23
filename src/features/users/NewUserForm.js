@@ -84,48 +84,42 @@ const NewUserForm = () => {
         <>
             <p className={errClass}>{error?.data?.message}</p>
 
-            <form className="form" onSubmit={onSaveUserClicked}>
-                <div className="form__title-row">
-                    <h2>New User</h2>
-                    <div className="form__action-buttons">
-                        <button
-                            className="icon-button"
-                            title="Save"
-                            disabled={!canSave}
-                        >
-                            <FontAwesomeIcon icon={faSave} />
-                        </button>
-                    </div>
-                </div>
-                <label className="form__label" htmlFor="username">
-                    Username: <span className="nowrap">[3-20 letters]</span></label>
+            <form className="form flex flex-col w-1/2 mx-auto" onSubmit={onSaveUserClicked}>
+                {/* <div className="form__title-row"> */}
+                <p className='bg-primaryDarker px-6 text-primaryBlue font-bold text-4xl text-center w-64 py-1 mx-auto mb-10 mt-8 [text-shadow:_0_2px_5px_rgb(0_0_0_/_40%)] '>Create User</p>
+
+                {/* </div> */}
+                {/* <label className="form__label" htmlFor="username">
+                    Username: <span className="nowrap">[3-20 letters]</span></label> */}
                 <input
-                    className={`form__input ${validUserClass}`}
+                    className="py-3 pl-4 outline-none rounded-md border-primaryBrown border-solid border-2 font-semibold text-primaryBlue"
                     id="username"
                     name="username"
                     type="text"
                     autoComplete="off"
                     value={username}
                     onChange={onUsernameChanged}
+                    placeholder="Input Username..."
                 />
 
-                <label className="form__label" htmlFor="password">
-                    Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
+                {/* <label className="form__label" htmlFor="password">
+                    Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span></label> */}
                 <input
-                    className={`form__input ${validPwdClass}`}
+                    className="mt-4 py-3 pl-4 outline-none rounded-md border-primaryBrown border-solid border-2 font-semibold text-primaryBlue"
                     id="password"
                     name="password"
                     type="password"
                     value={password}
                     onChange={onPasswordChanged}
+                    placeholder="Input Password"
                 />
 
-                <label className="form__label" htmlFor="roles">
+                <label className="text-center my-2 font-bold text-primaryBlue" htmlFor="roles">
                     ASSIGNED ROLES:</label>
                 <select
                     id="roles"
                     name="roles"
-                    className={`form__select ${validRolesClass}`}
+                    className=" h-auto text-center font-semibold border-primaryBrown border-solid border-2 rounded-md"
                     multiple={true}
                     size="3"
                     value={roles}
@@ -133,7 +127,16 @@ const NewUserForm = () => {
                 >
                     {options}
                 </select>
-
+                <div className="form__action-buttons">
+                    <button
+                        className={` w-full mt-4 py-1 font-bold text-xl rounded-md  ${canSave?'bg-primaryBrown text-white':'bg-gray-300 text-gray-100'}`}
+                        title="Save"
+                        disabled={!canSave}
+                    >
+                        Create
+                        {/* <FontAwesomeIcon icon={faSave} /> */}
+                    </button>
+                </div>
             </form>
         </>
     )

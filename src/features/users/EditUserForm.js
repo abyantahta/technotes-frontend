@@ -9,7 +9,7 @@ const USER_REGEX = /^[A-z]{3,20}$/
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/
 
 const EditUserForm = ({ user }) => {
-    console.log(user,'hausihduoashduashdouashoudhasuodhasoudhasou')
+    // console.log(user,'hausihduoashduashdouashoudhasuodhasoudhasou')
 
     const [updateUser, {
         isLoading,
@@ -109,10 +109,10 @@ const EditUserForm = ({ user }) => {
         <>
             <p className={errClass}>{errContent}</p>
 
-            <form className="form" onSubmit={e => e.preventDefault()}>
-                <div className="form__title-row">
-                    <h2>Edit User</h2>
-                    <div className="form__action-buttons">
+            <form className="form flex flex-col w-1/2 mx-auto" onSubmit={e => e.preventDefault()}>
+                {/* <div className="form__title-row"> */}
+                <p className='bg-primaryDarker px-6 text-primaryBlue font-bold text-4xl text-center w-64 py-1 mx-auto mb-10 mt-8 [text-shadow:_0_2px_5px_rgb(0_0_0_/_40%)] '>Edit User</p>
+                    {/* <div className="form__action-buttons">
                         <button
                             className="icon-button"
                             title="Save"
@@ -128,35 +128,37 @@ const EditUserForm = ({ user }) => {
                         >
                             <FontAwesomeIcon icon={faTrashCan} />
                         </button>
-                    </div>
-                </div>
-                <label className="form__label" htmlFor="username">
-                    Username: <span className="nowrap">[3-20 letters]</span></label>
+                    </div> */}
+                {/* </div> */}
+                {/* <label className="form__label" htmlFor="username">
+                    Username: <span className="nowrap">[3-20 letters]</span></label> */}
                 <input
-                    className={`form__input ${validUserClass}`}
+                    className="py-3 pl-4 outline-none rounded-md border-primaryBrown border-solid border-2 font-semibold text-primaryBlue"
                     id="username"
                     name="username"
                     type="text"
                     autoComplete="off"
                     value={username}
                     onChange={onUsernameChanged}
+                    placeholder="Input username..."
                 />
 
-                <label className="form__label" htmlFor="password">
-                    Password: <span className="nowrap">[empty = no change]</span> <span className="nowrap">[4-12 chars incl. !@#$%]</span></label>
+                {/* <label className="form__label" htmlFor="password">
+                    Password: <span className="nowrap">[empty = no change]</span> <span className="nowrap">[4-12 chars incl. !@#$%]</span></label> */}
                 <input
-                    className={`form__input ${validPwdClass}`}
+                    className="mt-4 py-3 pl-4 outline-none rounded-md border-primaryBrown border-solid border-2 font-semibold text-primaryBlue"
                     id="password"
                     name="password"
                     type="password"
                     value={password}
                     onChange={onPasswordChanged}
+                    placeholder="Input password..."
                 />
 
-                <label className="form__label form__checkbox-container" htmlFor="user-active">
+                <label className="form__label form__checkbox-container mt-3" htmlFor="user-active">
                     ACTIVE:
                     <input
-                        className="form__checkbox"
+                        className="form__checkbox ml-2"
                         id="user-active"
                         name="user-active"
                         type="checkbox"
@@ -165,12 +167,12 @@ const EditUserForm = ({ user }) => {
                     />
                 </label>
 
-                <label className="form__label" htmlFor="roles">
+                <label className="form__label font-semibold text-primaryBlue text-center" htmlFor="roles">
                     ASSIGNED ROLES:</label>
                 <select
                     id="roles"
                     name="roles"
-                    className={`form__select ${validRolesClass}`}
+                    className={`h-auto text-center font-semibold`}
                     multiple={true}
                     size="3"
                     value={roles}
@@ -178,7 +180,25 @@ const EditUserForm = ({ user }) => {
                 >
                     {options}
                 </select>
-
+                    <div className="form__action-buttons">
+                        <button
+                        className={` w-full mt-4 py-1 font-bold text-xl rounded-md  ${canSave?'bg-primaryBrown text-white':'bg-gray-300 text-gray-100'}`}
+                            title="Save"
+                            onClick={onSaveUserClicked}
+                            disabled={!canSave}
+                        >
+                            {/* <FontAwesomeIcon icon={faSave} /> */}
+                            Update
+                        </button>
+                        <button
+                className={` w-full mt-4 py-1 font-bold text-xl rounded-md bg-red-400 text-white`}
+                            title="Delete"
+                            onClick={onDeleteUserClicked}
+                        >
+                            {/* <FontAwesomeIcon icon={faTrashCan} /> */}
+                            Delete
+                        </button>
+                    </div>
             </form>
         </>
     )

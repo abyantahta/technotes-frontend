@@ -41,6 +41,8 @@ const NotesList = () => {
         const tableContent = ids?.length && filteredIds.map(noteId => <Note key={noteId} noteId={noteId} />)
 
         content = (
+            <>
+            <p className='bg-primaryDarker px-6 text-primaryBlue font-bold text-4xl text-center w-52 py-1 mx-auto mb-10 mt-8 [text-shadow:_0_2px_5px_rgb(0_0_0_/_40%)] '>Note List</p>
             <table className="table table--notes">
                 <thead className="table__thead">
                     <tr>
@@ -56,6 +58,7 @@ const NotesList = () => {
                     {tableContent}
                 </tbody>
             </table>
+            </>
         )
     }
 

@@ -1,3 +1,99 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+thead,
+tbody,
+tr {
+  display: contents;
+}
+
+.table {
+  font-size: 1rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  color: var(--TABLE-COLOR);
+  gap: 0.1em;
+}
+
+.table__button {
+  padding: 0.25em;
+  font-size: 1.5rem;
+  color: var(--TABLE-COLOR);
+}
+
+.table__thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.table__th,
+.table__cell {
+  background-color: white;
+  text-align: center;
+  /* border: 1px solid ; */
+  padding: 0.5em;
+}
+
+.table__cell:last-child {
+  display: grid;
+  place-content: center;
+}
+
+/* .table__cell--inactive {
+  background-color: var(--INACTIVE);
+} */
+
+.note__created,
+.note__updated,
+.note__username {
+  text-align: center;
+  display: none;
+}
+
+.note__status {
+  text-align: center;
+  font-weight: bold;
+}
+
+.note__status--open {
+  text-align: center;
+  color: green;
+}
+
+.note__status--completed {
+  text-align: center;
+  color: red;
+}
+@media screen and (max-width: 400px) {
+  .dash-header__nav {
+    gap: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .table {
+    font-size: 1.5rem;
+  }
+
+  .table--notes {
+    grid-template-columns: repeat(3, 1fr) 2fr repeat(2, 1fr);
+  }
+
+  .note__created,
+  .note__updated,
+  .note__username {
+    display: block;
+  }
+  .note__title {
+    text-align: center;
+  }
+  .note__edit {
+    text-align: center;
+  }
+  .form__action-buttons {
+    position: static;
+  }
+}
