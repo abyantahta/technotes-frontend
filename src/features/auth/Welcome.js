@@ -11,6 +11,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const Welcome = () => {
     const {username,isManager,isAdmin} = useAuth()
+    console.log(isManager,isAdmin)
     const date = new Date()
     const today = new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'long' }).format(date)
 
@@ -35,7 +36,7 @@ const Welcome = () => {
             </div>
             <div className="">
                 {
-                    (isAdmin || isManager) && (
+                    (isManager) && (
                         <div className='flex gap-10 mt-10'>
                             <Link to="/dash/users" className={'w-64 h-20 bg-white flex items-center justify-center font-bold rounded-md text-primaryBrown text-xl hover:bg-primaryDarker hover:duration-100 hover:text-white'}>
                             <FontAwesomeIcon className='mr-2' size='2x' icon={faUserGear}></FontAwesomeIcon>

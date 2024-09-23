@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom"
 import { useAddNewNoteMutation } from "./notesApiSlice"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSave } from "@fortawesome/free-solid-svg-icons"
+import useAuth from "../../hooks/useAuth"
 
 const NewNoteForm = ({ users }) => {
-
+    const {username,isManager,isAdmin} = useAuth()
     const [addNewNote, {
         isLoading,
         isSuccess,
@@ -36,11 +37,14 @@ const NewNoteForm = ({ users }) => {
 
     const onSaveNoteClicked = async (e) => {
         e.preventDefault()
-        if (canSave) {
+        if (canSave && (isAdmin || isManager)) {
             await addNewNote({ user: userId, title, text })
+        }else{
+            await addNewNote({ user: currentUserID, title, text })
         }
     }
-
+    let currentUserID = users.filter(user=>user.username===username)[0]
+    // console.log(currentUserID._id)
     const options = users.map(user => {
         return (
             <option
@@ -85,18 +89,23 @@ const NewNoteForm = ({ users }) => {
                     placeholder="Input Text Here..."
                     
                 />
-
-                <label className="text-center my-2 font-bold text-primaryBlue" htmlFor="username">
-                    ASSIGNED TO:</label>
-                <select
-                    id="username"
-                    name="username"
-                    className=" h-8 text-center font-semibold border-primaryBrown border-solid border-2 rounded-md"
-                    value={userId}
-                    onChange={onUserIdChanged}
-                >
-                    {options}
-                </select>
+                {
+                    (isAdmin||isManager) && (
+                        <>
+                            <label className="text-center my-2 font-bold text-primaryBlue" htmlFor="username">
+                                ASSIGNED TO:</label>
+                            <select
+                                id="username"
+                                name="username"
+                                className=" h-8 text-center font-semibold border-primaryBrown border-solid border-2 rounded-md"
+                                value={userId}
+                                onChange={onUserIdChanged}
+                            >
+                                {options}
+                            </select>
+                        </>
+                    )
+                }
                 <div className="form__action-buttons">
                     <button
                         className={` w-full mt-4 py-1 font-bold text-xl rounded-md  ${canSave?'bg-primaryBrown text-white':'bg-gray-300 text-gray-100'}`}

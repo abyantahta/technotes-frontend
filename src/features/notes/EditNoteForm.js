@@ -143,18 +143,23 @@ const EditNoteForm = ({ note, users }) => {
                                 onChange={onCompletedChanged}
                             />
                         </label>
-
-                        <label className="text-center my-2 font-bold text-primaryBlue" htmlFor="note-username">
-                            ASSIGNED TO:</label>
-                        <select
-                            id="note-username"
-                            name="username"
-                            className="form__select ml-2 mt-2 w-32 text-center font-semibold"
-                            value={userId}
-                            onChange={onUserIdChanged}
-                        >
-                            {options}
-                        </select>
+                        {
+                            (isManager || isAdmin) && (
+                                <>
+                                <label className="text-center my-2 font-bold text-primaryBlue" htmlFor="note-username">
+                                    ASSIGNED TO:</label>
+                                <select
+                                    id="note-username"
+                                    name="username"
+                                    className="form__select ml-2 mt-2 w-32 text-center font-semibold"
+                                    value={userId}
+                                    onChange={onUserIdChanged}
+                                >
+                                    {options}
+                                </select>
+                                </>
+                            )
+                        }
                     </div>
                     <div className="form__divider">
                         <p className="form__created">Created:<br />{created}</p>
